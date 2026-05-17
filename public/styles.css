@@ -1364,6 +1364,10 @@ li {
   font-size: 1.06rem;
 }
 
+.mobile-cta-bar {
+  display: none;
+}
+
 .admin-section {
   min-height: 460px;
   padding-top: 72px;
@@ -1690,15 +1694,15 @@ li {
   }
 
   .hero-grid {
-    padding: 42px 0 64px;
-    gap: 34px;
+    padding: 32px 0 48px;
+    gap: 28px;
   }
 
   .hero-copy h1,
   .page-hero h1,
   .quote-page-copy h1 {
-    font-size: clamp(1.85rem, 8vw, 2.8rem);
-    line-height: 1.08;
+    font-size: clamp(1.65rem, 7vw, 2.4rem);
+    line-height: 1.1;
   }
 
   .hero-text,
@@ -1708,12 +1712,50 @@ li {
   }
 
   body {
-    font-size: 0.94rem;
-    line-height: 1.62;
+    font-size: 0.9rem;
+    line-height: 1.58;
+    padding-bottom: 64px;
+  }
+
+  .mobile-cta-bar {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    gap: 1px;
+    background: rgba(17, 19, 23, 0.96);
+    backdrop-filter: blur(8px);
+    padding: 10px 12px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.18);
+  }
+
+  .mobile-cta-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .mobile-cta-quote {
+    color: var(--white);
+    background: var(--red);
+  }
+
+  .mobile-cta-call {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .quote-page-section {
-    padding: 42px 0 64px;
+    padding: 36px 0 56px;
   }
 
   .hero-actions .btn,
@@ -1738,7 +1780,7 @@ li {
   }
 
   .page-hero {
-    padding: 52px 0 42px;
+    padding: 40px 0 32px;
   }
 
   .proof-grid {
@@ -1760,15 +1802,6 @@ li {
     grid-template-columns: 1fr;
   }
 
-  .section,
-  .catalog-section,
-  .faq-feature {
-    padding: 64px 0;
-  }
-
-  .split-section {
-    padding: 72px 0;
-  }
 
   .section-header h2,
   .split-copy h2,
@@ -1776,34 +1809,79 @@ li {
   .final-strip h2,
   .catalog-section h2,
   .faq-feature h2 {
-    font-size: clamp(1.55rem, 7vw, 2.2rem);
-    line-height: 1.1;
+    font-size: clamp(1.4rem, 6vw, 1.95rem);
+    line-height: 1.12;
+  }
+
+  .section-header p,
+  .split-copy p,
+  .quote-copy p,
+  .catalog-section p,
+  .faq-feature p {
+    font-size: 0.9rem;
   }
 
   .preview-card h3,
   .catalog-card h3 {
-    margin: 16px 0 8px;
-    font-size: 1.12rem;
+    margin: 14px 0 6px;
+    font-size: 1.05rem;
   }
 
   .preview-card p,
   .catalog-card p {
-    font-size: 0.88rem;
+    font-size: 0.84rem;
   }
 
   .eyebrow {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
   }
 
   .form-intro h3 {
-    font-size: clamp(1.3rem, 5vw, 1.7rem);
+    font-size: clamp(1.2rem, 5vw, 1.55rem);
+  }
+
+  .btn {
+    min-height: 44px;
+    padding: 0 18px;
+    font-size: 0.88rem;
+  }
+
+  .btn-large {
+    min-height: 48px;
+    padding-inline: 24px;
+  }
+
+  .quote-form label {
+    font-size: 0.82rem;
+  }
+
+  .quote-form input,
+  .quote-form select,
+  .quote-form textarea {
+    min-height: 46px;
+    padding: 12px 13px;
+    font-size: 0.88rem;
+  }
+
+  .quote-form {
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .section,
+  .catalog-section,
+  .faq-feature {
+    padding: 48px 0;
+  }
+
+  .split-section {
+    padding: 56px 0;
   }
 
   .preview-card,
   .catalog-card,
-  .quote-form,
   .service-cta {
-    padding: 22px;
+    padding: 20px;
   }
 
   .process-list article {
