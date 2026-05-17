@@ -38,6 +38,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 128px;
 }
 
 body {
@@ -1339,6 +1340,30 @@ li {
   transform: translateY(0);
 }
 
+.quote-page-section {
+  padding: 64px 0 96px;
+  background: linear-gradient(180deg, var(--paper-2), var(--white));
+}
+
+.quote-page-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: 44px;
+  align-items: start;
+}
+
+.quote-page-copy h1 {
+  margin-bottom: 0;
+  font-size: clamp(2.2rem, 4.6vw, 4rem);
+  font-weight: 900;
+}
+
+.quote-page-copy > p {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 1.06rem;
+}
+
 .admin-section {
   min-height: 460px;
   padding-top: 72px;
@@ -1587,6 +1612,7 @@ li {
   .page-hero-grid,
   .split-section,
   .quote-layout,
+  .quote-page-layout,
   .final-strip,
   .faq-layout {
     grid-template-columns: 1fr;
@@ -1669,14 +1695,25 @@ li {
   }
 
   .hero-copy h1,
-  .page-hero h1 {
-    font-size: clamp(2.15rem, 10vw, 3.25rem);
-    line-height: 1.06;
+  .page-hero h1,
+  .quote-page-copy h1 {
+    font-size: clamp(1.85rem, 8vw, 2.8rem);
+    line-height: 1.08;
   }
 
   .hero-text,
-  .page-hero p:not(.eyebrow) {
-    font-size: 1rem;
+  .page-hero p:not(.eyebrow),
+  .quote-page-copy > p {
+    font-size: 0.94rem;
+  }
+
+  body {
+    font-size: 0.94rem;
+    line-height: 1.62;
+  }
+
+  .quote-page-section {
+    padding: 42px 0 64px;
   }
 
   .hero-actions .btn,
@@ -1739,8 +1776,27 @@ li {
   .final-strip h2,
   .catalog-section h2,
   .faq-feature h2 {
-    font-size: clamp(1.75rem, 8.8vw, 2.55rem);
-    line-height: 1.08;
+    font-size: clamp(1.55rem, 7vw, 2.2rem);
+    line-height: 1.1;
+  }
+
+  .preview-card h3,
+  .catalog-card h3 {
+    margin: 16px 0 8px;
+    font-size: 1.12rem;
+  }
+
+  .preview-card p,
+  .catalog-card p {
+    font-size: 0.88rem;
+  }
+
+  .eyebrow {
+    font-size: 0.7rem;
+  }
+
+  .form-intro h3 {
+    font-size: clamp(1.3rem, 5vw, 1.7rem);
   }
 
   .preview-card,

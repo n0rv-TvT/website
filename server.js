@@ -112,6 +112,7 @@ const publicRootFiles = new Set([
   "/index.html",
   "/services.html",
   "/faq.html",
+  "/quote.html",
   "/admin.html",
   "/privacy.html",
   "/terms.html",

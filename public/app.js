@@ -170,7 +170,7 @@ function initContactPopup() {
       <p class="contact-dialog-copy">Call now or request a free estimate online. We serve Illinois and the Chicagoland area from Northbrook.</p>
       <div class="contact-dialog-actions">
         <a class="btn btn-primary btn-large" href="tel:+18478493939">Call (847) 849-3939</a>
-        <a class="btn btn-secondary btn-large" href="index.html#quote">Request Free Estimate</a>
+        <a class="btn btn-secondary btn-large" href="quote.html">Request Free Estimate</a>
       </div>
       <div class="contact-dialog-grid">
         <article>
@@ -215,11 +215,8 @@ function initContactPopup() {
 
   closeButton.addEventListener("click", closeContactPopup);
 
-  modal.querySelector('a[href="index.html#quote"]').addEventListener("click", () => {
+  modal.querySelector('a[href="quote.html"]').addEventListener("click", () => {
     closeContactPopup();
-    if (window.location.pathname.endsWith("/") || window.location.pathname.endsWith("/index.html")) {
-      requestAnimationFrame(() => document.querySelector("#quote")?.scrollIntoView({ behavior: "smooth" }));
-    }
   });
 
   function openContactPopup() {
