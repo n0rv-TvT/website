@@ -8,6 +8,7 @@ import { DatabaseSync } from "node:sqlite";
 import nodemailer from "nodemailer";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const publicDir = path.join(__dirname, "public");
 loadEnv(path.join(__dirname, ".env"));
 const dataDir = process.env.DATA_DIR ? path.resolve(process.env.DATA_DIR) : path.join(__dirname, "data");
 const dbPath = path.join(dataDir, "quotes.sqlite");
@@ -352,15 +353,15 @@ function resolvePublicFilePath(pathname) {
   const extension = path.extname(requestedPath).toLowerCase();
 
   if (publicRootFiles.has(requestedPath)) {
-    return path.join(__dirname, requestedPath);
+    return path.join(publicDir, requestedPath);
   }
 
   if (!requestedPath.startsWith("/assets/") || !publicAssetExtensions.has(extension)) {
     return null;
   }
 
-  const filePath = path.normalize(path.join(__dirname, requestedPath));
-  const assetsRoot = path.join(__dirname, "assets") + path.sep;
+  const filePath = path.normalize(path.join(publicDir, requestedPath));
+  const assetsRoot = path.join(publicDir, "assets") + path.sep;
 
   if (!filePath.startsWith(assetsRoot)) {
     return null;
