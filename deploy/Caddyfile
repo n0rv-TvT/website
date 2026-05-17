@@ -1,0 +1,21 @@
+your-domain.com {
+  encode zstd gzip
+
+  @api path /api/*
+  reverse_proxy @api 127.0.0.1:3000
+
+  @blocked path /.env /server.js /package* /README.md /ecosystem.config.cjs /data/* /node_modules/* /scripts/* /deploy/* /backups/* /logs/*
+  respond @blocked 404
+
+  root * /var/www/uu-movers
+  file_server
+
+  header {
+    Content-Security-Policy "default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'"
+    Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "DENY"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  }
+}

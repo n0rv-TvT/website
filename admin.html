@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Quotes | U&amp;U Movers</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="topbar">
+        <div class="container topbar-inner">
+          <span>Admin dashboard</span>
+          <span>Quote requests</span>
+          <span>Credential protected</span>
+          <a href="index.html">Back to site</a>
+        </div>
+      </div>
+      <nav class="container navbar" aria-label="Admin navigation">
+        <a class="brand" href="index.html" aria-label="U&U Movers home">
+          <img src="assets/logo.svg" alt="U&U Movers" />
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="page-hero">
+        <div class="container page-hero-grid">
+          <div class="reveal">
+            <p class="eyebrow">Admin</p>
+            <h1>Quote request dashboard.</h1>
+          </div>
+          <p class="reveal">Sign in with the admin credentials configured on the server to view and export quote requests.</p>
+        </div>
+      </section>
+
+      <section class="container section admin-section" data-admin-dashboard>
+        <div class="admin-modal" data-admin-modal role="dialog" aria-modal="true" aria-labelledby="admin-login-title">
+          <form class="admin-login-card" data-admin-login-form>
+            <p class="eyebrow">Secure access</p>
+            <h2 id="admin-login-title">Enter admin credentials</h2>
+            <p>Use <code>ADMIN_USERNAME</code> and <code>ADMIN_PASSWORD</code>. If no password is set, use <code>ADMIN_TOKEN</code> as the password.</p>
+            <label>
+              Username
+              <input type="text" data-admin-username autocomplete="username" placeholder="admin" required />
+            </label>
+            <label>
+              Password
+              <input type="password" data-admin-password autocomplete="current-password" placeholder="Admin password" required />
+            </label>
+            <p class="admin-status" data-admin-login-status role="status" aria-live="polite"></p>
+            <button class="btn btn-primary btn-large" type="submit">Enter Dashboard</button>
+          </form>
+        </div>
+
+        <div data-admin-content hidden>
+          <div class="admin-summary reveal">
+            <article><span>Total requests</span><strong data-admin-total>0</strong></article>
+            <article><span>Latest request</span><strong data-admin-latest>None</strong></article>
+            <article><span>Notifications sent</span><strong data-admin-notified>0</strong></article>
+          </div>
+
+          <div class="admin-toolbar reveal">
+            <div>
+              <p class="eyebrow">Dashboard</p>
+              <h2>Quote requests</h2>
+            </div>
+            <div class="admin-actions">
+              <button class="btn btn-outline" type="button" data-admin-refresh>Refresh</button>
+              <button class="btn btn-outline" type="button" data-admin-export>Export CSV</button>
+              <button class="btn btn-primary" type="button" data-admin-logout>Log Out</button>
+            </div>
+          </div>
+
+          <p class="admin-status reveal" data-admin-status role="status" aria-live="polite">Loading quote requests...</p>
+
+          <div class="admin-table-wrap reveal">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Created</th>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Email</th>
+                  <th>Type</th>
+                  <th>Route</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody data-admin-table-body>
+                <tr>
+                  <td colspan="8">No quote requests loaded.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "uu-movers-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "backup": "node scripts/backup-sqlite.js",
+    "pm2:start": "pm2 start ecosystem.config.cjs",
+    "pm2:reload": "pm2 reload ecosystem.config.cjs"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "nodemailer": "^8.0.7"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
