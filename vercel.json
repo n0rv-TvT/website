@@ -1,5 +1,5 @@
 {
-  "buildCommand": "",
+  "framework": null,
   "outputDirectory": "public",
   "headers": [
     {
