@@ -100,9 +100,12 @@ QUOTE_FROM_EMAIL=website@example.com
 SMTP_HOST=smtp.example.com
 SMTP_PORT=587
 SMTP_SECURE=false
+SMTP_TIMEOUT_MS=15000
 SMTP_USER=website@example.com
 SMTP_PASS=replace-with-smtp-password
 ```
+
+Quote submissions return after the request is saved. Email delivery runs in the background and updates the saved request with the notification status, so a slow SMTP provider does not make the customer form hang.
 
 ## Pages
 

@@ -251,19 +251,9 @@ async function handleQuoteCreate(request, response) {
   );
 
   const quoteId = Number(result.lastInsertRowid);
-  let notificationSent = false;
-  let notificationError = "";
+  void queueQuoteNotification(quoteId, quote);
 
-  try {
-    notificationSent = await sendQuoteNotification({ id: quoteId, ...quote });
-  } catch (error) {
-    notificationError = error.message || "Notification failed.";
-    log("error", "quote_notification_failed", { quoteId, error: serializeError(error) });
-  }
-
-  updateNotification.run(notificationSent ? 1 : 0, notificationError, quoteId);
-
-  return sendJson(response, 201, { success: true, id: quoteId, notificationSent });
+  return sendJson(response, 201, { success: true, id: quoteId, notificationQueued: true });
 }
 
 function handleQuoteList(request, response) {
@@ -468,10 +458,15 @@ async function sendQuoteNotification(quote) {
     return false;
   }
 
+  const timeoutMs = Math.max(1000, Number.parseInt(process.env.SMTP_TIMEOUT_MS || "15000", 10) || 15000);
+
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT || 587),
     secure: process.env.SMTP_SECURE === "true",
+    connectionTimeout: timeoutMs,
+    greetingTimeout: timeoutMs,
+    socketTimeout: timeoutMs,
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
@@ -505,6 +500,25 @@ async function sendQuoteNotification(quote) {
   return true;
 }
 
+async function queueQuoteNotification(quoteId, quote) {
+  let notificationSent = false;
+  let notificationError = "";
+
+  try {
+    notificationSent = await sendQuoteNotification({ id: quoteId, ...quote });
+    if (notificationSent) log("info", "quote_notification_sent", { quoteId });
+  } catch (error) {
+    notificationError = error.message || "Notification failed.";
+    log("error", "quote_notification_failed", { quoteId, error: serializeError(error) });
+  }
+
+  try {
+    updateNotification.run(notificationSent ? 1 : 0, notificationError, quoteId);
+  } catch (error) {
+    log("error", "quote_notification_update_failed", { quoteId, error: serializeError(error) });
+  }
+}
+
 async function verifyTurnstile(token, ip) {
   if (!process.env.TURNSTILE_SECRET_KEY) return "";
   if (!token) return "Please complete the security check.";
@@ -520,6 +534,7 @@ async function verifyTurnstile(token, ip) {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body,
+      signal: AbortSignal.timeout(10000),
     });
     const result = await response.json();
 
