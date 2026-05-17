@@ -1,0 +1,7 @@
+server.js
+ecosystem.config.cjs
+deploy/
+scripts/
+backups/
+data/
+logs/
