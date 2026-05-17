@@ -1623,6 +1623,10 @@ li {
     grid-template-columns: 1fr 1fr;
   }
 
+  .footer-grid > :first-child {
+    grid-column: 1 / -1;
+  }
+
   .admin-toolbar {
     grid-template-columns: 1fr;
   }
@@ -1700,7 +1704,15 @@ li {
     padding: 52px 0 42px;
   }
 
-  .proof-grid,
+  .proof-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .proof-grid article {
+    min-height: 100px;
+    padding: 16px;
+  }
+
   .service-preview-grid,
   .catalog-grid,
   .quote-form,
@@ -1739,7 +1751,15 @@ li {
   }
 
   .process-list article {
-    grid-template-columns: 1fr;
+    grid-template-columns: 40px 1fr;
+    gap: 12px;
+    padding: 20px;
+  }
+
+  .process-list span {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
   }
 
   .admin-actions .btn {
