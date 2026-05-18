@@ -116,8 +116,13 @@
               <input type="date" name="movingDate" />
             </label>
             <label>
-              Rooms or size
-              <input type="text" name="moveSize" placeholder="Studio, 2 bedroom, office, etc." />
+              Move size
+              <select name="moveSize">
+                <option value="">Select size</option>
+                <option value="1-2 rooms — 16 ft. truck, 2-3 movers">1-2 rooms — 16 ft. truck, 2-3 movers</option>
+                <option value="3-4 rooms — 24 ft. truck, 3-4 movers">3-4 rooms — 24 ft. truck, 3-4 movers</option>
+                <option value="5+ rooms — 26 ft. truck, 4+ movers">5+ rooms — 26 ft. truck, 4+ movers</option>
+              </select>
             </label>
             <label class="hidden-field" aria-hidden="true">
               Company website
@@ -125,7 +130,7 @@
             </label>
             <label class="full">
               Move details
-              <textarea name="details" rows="5" placeholder="Large items, stairs, packing needs, storage, timing, or furniture assembly details." required></textarea>
+              <textarea name="details" rows="5" placeholder="Example: 2 bedroom apartment, 3rd floor with elevator. King bed, couch, dining table, 20 boxes. Need packing help for fragile items." required></textarea>
             </label>
             <input type="hidden" name="turnstileToken" data-turnstile-token />
             <div class="turnstile-shell" data-turnstile-widget hidden></div>
